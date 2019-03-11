@@ -1,4 +1,6 @@
 const axios = require('axios');
+const lugar = require('./lugar/lugar');
+const clima = require('./clima/clima');
 const argv = require('yargs').options({
     direccion: {
         alias: 'd',
@@ -7,12 +9,11 @@ const argv = require('yargs').options({
     }
 }).argv;
 
-let encodedUrl = encodeURI(argv.direccion);
+/*lugar.getLugarLatLng(argv.direccion)
+    .then(console.log);
+*/
+clima.getClima(40.750000, -74.000000)
+    .then(console.log)
+    .catch(console.log);
 
-axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${encodedUrl}&key=YOUR_API_KEY`)
-.then(resp => {
 
-    let location
-
-})
-.catch(e => console.log('Error!', e));
